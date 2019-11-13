@@ -127,6 +127,10 @@ module MyMarketing
 
     attr_accessor :force_ending_format
 
+    attr_accessor :aes_iv
+
+    attr_accessor :aes_key
+
     def initialize
       @scheme = 'https'
       @host = 'virtserver.swaggerhub.com'

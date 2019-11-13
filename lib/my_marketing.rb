@@ -15,6 +15,7 @@ require 'my_marketing/api_client'
 require 'my_marketing/api_error'
 require 'my_marketing/version'
 require 'my_marketing/configuration'
+require 'my_marketing/token_generator'
 
 # Models
 require 'my_marketing/models/consumer_create'

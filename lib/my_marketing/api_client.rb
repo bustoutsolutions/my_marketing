@@ -42,7 +42,13 @@ module MyMarketing
       @@default ||= ApiClient.new
     end
 
+    def token_generator
+      @token_generator ||= TokenGenerator.new(self)
+    end
+
     # Call an API with given options.
+    #
+    # Includes a hook to update the token generator with the new bearer token
     #
     # @return [Array<(Object, Fixnum, Hash)>] an array of 3 elements:
     #   the data deserialized from response body (could be nil), response status code and response headers.
@@ -74,6 +80,7 @@ module MyMarketing
       else
         data = nil
       end
+      token_generator.update_from_response(data)
       return data, response.code, response.headers
     end
 
@@ -115,6 +122,9 @@ module MyMarketing
       req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
 
       if [:post, :patch, :put, :delete].include?(http_method)
+        if opts[:body].respond_to?(:token)
+          opts[:body].token = token_generator.current_token
+        end
         req_body = build_request_body(header_params, form_params, opts[:body])
         req_opts.update :body => req_body
         if @config.debugging
