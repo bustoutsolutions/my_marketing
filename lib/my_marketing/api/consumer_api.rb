@@ -67,7 +67,7 @@ module MyMarketing
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ConsumerResponse')
+        :return_type => 'ConsumerResult')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConsumerApi#consumers_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

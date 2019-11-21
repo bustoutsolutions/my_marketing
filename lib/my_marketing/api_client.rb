@@ -122,9 +122,7 @@ module MyMarketing
       req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
 
       if [:post, :patch, :put, :delete].include?(http_method)
-        if opts[:body].respond_to?(:token)
-          opts[:body].token = token_generator.current_token
-        end
+
         req_body = build_request_body(header_params, form_params, opts[:body])
         req_opts.update :body => req_body
         if @config.debugging
@@ -359,6 +357,9 @@ module MyMarketing
       if model.is_a?(Array)
         local_body = model.map { |m| object_to_hash(m) }
       else
+        if model.respond_to?(:token)
+          model.token = token_generator.current_token
+        end
         local_body = object_to_hash(model)
       end
       local_body.to_json
