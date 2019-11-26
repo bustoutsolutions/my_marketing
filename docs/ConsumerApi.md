@@ -69,7 +69,7 @@ require 'my_marketing'
 
 api_instance = MyMarketing::ConsumerApi.new
 
-virtuoso_id = 8.14 # Float | Virtuoso ID for this consumer that was received as part of /consumer POST response
+virtuoso_id = 814 # Integer | Virtuoso ID for this consumer that was received as part of /consumer POST response
 
 body = MyMarketing::ConsumerUpdate.new # ConsumerUpdate | Update an existing Consumer record
 

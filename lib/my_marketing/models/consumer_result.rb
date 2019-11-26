@@ -26,7 +26,7 @@ module MyMarketing
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'virtuoso_id' => :'Float'
+        :'virtuoso_id' => :'Integer'
       }
     end
 

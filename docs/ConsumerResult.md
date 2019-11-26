@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**virtuoso_id** | **Float** |  | [optional] 
+**virtuoso_id** | **Integer** |  | [optional] 
 
 
